@@ -1,3 +1,14 @@
 body {
     margin: 45px;
 }
+
+/* .modal-dialog {
+    background-color: gray;
+} */
+.modal-card {
+    display: flex;
+}
+
+.list-items {
+    display: flex;
+}

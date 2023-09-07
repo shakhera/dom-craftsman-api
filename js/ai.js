@@ -6,7 +6,7 @@ const loadAiData = async () => {
     displayAiData(data.data.tools);
 }
 const displayAiData = (aiDatas) => {
-    // console.log(aiDatas);
+    console.log(aiDatas);
     const aiContainer = document.getElementById('ai-container');
     // aiDatas = aiDatas.slice(0, 6);
 
@@ -22,7 +22,7 @@ const displayAiData = (aiDatas) => {
     }
     // display ai property
     aiDatas.forEach(aiData => {
-        console.log(aiData);
+        // console.log(aiData);
         const aiDiv = document.createElement('div');
         aiDiv.classList.add = 'col';
         aiDiv.innerHTML = `
@@ -60,31 +60,33 @@ const displyAiDetails = (ai) => {
     console.log(ai);
     const modalContainer = document.getElementById('aiDetailModalBody');
     modalContainer.innerHTML = `
-    <div class="col mb-4">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">${ai.description}</h5>
-            <p class="card-text"></p>
-            <div>
-            <h6 class="card-text">Feature: </h6>
-            <ul id="list-items">
-                <li>${ai.features[1].feature_name}</li>
-                <li>${ai.features[2].feature_name}</li>
-                <li>${ai.features[3].feature_name}</li>
-            </lu>
-            </div>
-            <div>
-            <h6 class="card-text">Integrations: </h6>
-            <ul id="list-items">
-                <li>${ai.integrations[0]}</li>
-                <li>${ai.integrations[1]}</li>
-                <li>${ai.integrations[2]}</li>
-            </lu>
+    <div class="modal-card col mb-4 modal-card">
+        <div class="card ">
+            <div class="card-body">
+                <h5 class="card-title">${ai.description}</h5>
+                <div class="list-items">
+                    <div>
+                        <h6 class="card-text">Feature: </h6>
+                        <ul id="list-items">
+                            <li>${ai.features[1].feature_name}</li>
+                            <li>${ai.features[2].feature_name}</li>
+                            <li>${ai.features[3].feature_name}</li>
+                            </lu>
+                    </div>
+                    <div>
+                        <h6 class="card-text">Integrations: </h6>
+                        <ul id="list-items">
+                            <li>${ai.integrations[0]}</li>
+                            <li>${ai.integrations[1]}</li>
+                            <li>${ai.integrations[2]}</li>
+                            </lu>
+                    </div>
+                </div>
             </div>
         </div>
-
+        
     </div>
-</div>
+    
     `;
     // <img src="..." class="card-img-top" alt="...">
 }
