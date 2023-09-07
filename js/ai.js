@@ -37,7 +37,7 @@ const displayAiData = (aiDatas) => {
                         <li>${aiData.features[1]}</li>
                     </lu>                                 
                 </div>
-                <button onclick="loadAiDetails()" id="" class="btn btn-primary ms-2" type="button" data-bs-toggle="modal" data-bs-target="#aiDetailModal">Details</button>
+                <button onclick="loadAiDetails(${aiData.id})" id="" class="btn btn-primary ms-2" type="button" data-bs-toggle="modal" data-bs-target="#aiDetailModal">Details</button>
            </div>
         </div>
         `;
@@ -49,9 +49,9 @@ document.getElementById('btn-show-all').addEventListener('click', function () {
 
 })
 
-const loadAiDetails = async () => {
-    const url = `https://openapi.programming-hero.com/api/ai/tool/01`;
-    // const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+const loadAiDetails = async (id) => {
+    // const url = `https://openapi.programming-hero.com/api/ai/tool/01`;
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displyAiDetails(data.data);
