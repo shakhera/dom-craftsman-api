@@ -6,7 +6,7 @@ const loadAiData = async () => {
     displayAiData(data.data.tools);
 }
 const displayAiData = (aiDatas) => {
-    console.log(aiDatas);
+    // console.log(aiDatas);
     const aiContainer = document.getElementById('ai-container');
     // aiDatas = aiDatas.slice(0, 6);
 
@@ -37,7 +37,7 @@ const displayAiData = (aiDatas) => {
                         <li>${aiData.features[1]}</li>
                     </lu>                                 
                 </div>
-                <button onclick="loadAiDetails(${aiData.id})" id="" class="btn btn-primary ms-2" type="button" data-bs-toggle="modal" data-bs-target="#aiDetailModal">Details</button>
+                <button onclick="loadAiDetails('${aiData.id}')" id="" class="btn btn-primary ms-2" type="button" data-bs-toggle="modal" data-bs-target="#aiDetailModal">Details</button>
            </div>
         </div>
         `;
@@ -49,19 +49,20 @@ document.getElementById('btn-show-all').addEventListener('click', function () {
 
 })
 
-const loadAiDetails = async (id) => {
-    // const url = `https://openapi.programming-hero.com/api/ai/tool/01`;
+const loadAiDetails = async id => {
+    // console.log(id);
+    // const url = `https://openapi.programming-hero.com/api/ai/tool/02`;
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displyAiDetails(data.data);
 }
-const displyAiDetails = (ai) => {
+const displyAiDetails = ai => {
     console.log(ai);
     const modalContainer = document.getElementById('aiDetailModalBody');
     modalContainer.innerHTML = `
-    <div class="modal-card col mb-4 modal-card">
-        <div class="card ">
+    <div class="modal-card col mb-4 modal-card ">
+        <div class="card me-3">
             <div class="card-body">
                 <h5 class="card-title">${ai.description}</h5>
                 <div class="list-items">
@@ -84,11 +85,17 @@ const displyAiDetails = (ai) => {
                 </div>
             </div>
         </div>
+        <div class="card ">
+            <div class="card-body">
+            <img src="${ai.image_link[0]}" class="card-img-top" alt="...">
+                
+            </div>
+        </div>
         
     </div>
     
     `;
-    // <img src="..." class="card-img-top" alt="...">
+
 }
 
 loadAiData();
